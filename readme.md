@@ -36,3 +36,6 @@ module.exports = function(grunt) {
 };
 ```
 5. to run use `grunt` command for `default` target or you can specify build command like `grunt default`
+6. add sample code (todo application)
+7. update Gruntfile.js to add modules. in this case 'grunt-contrib-uglify'.  
+8. update the modules using `npm install grunt-contrib-uglify --save-dev`
