@@ -16,14 +16,21 @@ module.exports = function(grunt) {
 			  // files needs to be concatenated
 			  src: ['src/**/*.js', '!src/js/app.js'],
 			  // location of the concatenated output JS file
-			  dest: 'dist/<%= pkg.name %>.js'
+			  dest: 'dist/js/<%= pkg.name %>.js'
 		   }
 		},
 		
 		copy: {
 			main: {
-				src: 'src/js/app.js',
-				dest: 'dist/app.js'			
+				expand: true,
+				files: [
+					{
+						expand: true,
+						cwd: 'src',
+						src: ['**'],
+						dest: 'dist/'
+					}
+				]
 			}
 		},
 		
@@ -34,8 +41,8 @@ module.exports = function(grunt) {
 		   },
 		   dist: {
 			  files: {
-				 'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>'],
-				 'dist/app.min.js': ['dist/app.js']
+				 'dist/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>'],
+				 'dist/js/app.min.js': ['dist/js/app.js']
 			  }
 		   }
 		},
