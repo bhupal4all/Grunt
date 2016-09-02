@@ -55,4 +55,31 @@ concat: {
    }
 }
 ```
-
+11. add uglify like below, which considers source file from `concat / dist / dist` property
+```js
+uglify: {
+   options: {
+	  // banner will be inserted at the top of the output which displays the date and time
+	  banner: '/*! <%= pkg.name %> <%= grunt.template.today() %> */\n'
+   },
+   dist: {
+	  files: {
+		 'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+	  }
+   }
+}		
+```
+12. add jshint like below, add files for compilation.  in our case, excluding all framework js files
+```js
+jshint: {
+   // define the files to lint
+   files: ['Gruntfile.js', 'src/**/app.js'],
+   // configure JSHint
+   options: {
+	  // more options here if you want to override JSHint defaults
+	  globals: {
+		 jQuery: false,
+	  }
+   }
+}
+```

@@ -18,6 +18,30 @@ module.exports = function(grunt) {
 			  // location of the concatenated output JS file
 			  dest: 'dist/<%= pkg.name %>.js'
 		   }
+		},
+		
+		uglify: {
+		   options: {
+			  // banner will be inserted at the top of the output which displays the date and time
+			  banner: '/*! <%= pkg.name %> <%= grunt.template.today() %> */\n'
+		   },
+		   dist: {
+			  files: {
+				 'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+			  }
+		   }
+		},
+		
+		jshint: {
+		   // define the files to lint
+		   files: ['Gruntfile.js', 'src/**/app.js'],
+		   // configure JSHint
+		   options: {
+			  // more options here if you want to override JSHint defaults
+			  globals: {
+				 jQuery: false,
+			  }
+		   }
 		}
    });
 
@@ -25,7 +49,9 @@ module.exports = function(grunt) {
    grunt.log.write('Hello world! Welcome to Tutorialspoint!!\n');
 
    grunt.loadNpmTasks('grunt-contrib-concat');
+   grunt.loadNpmTasks('grunt-contrib-uglify');
+   grunt.loadNpmTasks('grunt-contrib-jshint');
 
    // Default task(s).
-   grunt.registerTask('default' , ['concat']);
+   grunt.registerTask('default' , ['jshint','concat','uglify']);
 };
