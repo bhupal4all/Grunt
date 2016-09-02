@@ -20,7 +20,7 @@ app.service('TodoService',function(){
 	this.markTaskDone = function(task){
 		task.done = true;
 		//console.log('marking done at service for ' + task);
-	}
+	};
 
 	this.addTask = function(taskName){
 		tasks.push({
@@ -69,9 +69,9 @@ app.directive('taskInfo', function($parse){
 		$scope.$watch('task', function(){
 			if ($scope.task.done){
 				$element.css({'text-decoration':'line-through'});
-			};
+			}
 		}, true);
-	}
+	};
 
 	return taskInfo;
 });
@@ -126,7 +126,7 @@ app.controller("simpleController", function($scope, TodoService) {
 	};
 
 	$scope.applyStyle = function(task) {
-		if (task.done) return { 'text-decoration':'line-through'}
+		if (task.done) return { 'text-decoration':'line-through'};
 	};
 
 });
