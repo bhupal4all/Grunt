@@ -39,3 +39,20 @@ module.exports = function(grunt) {
 6. add sample code (todo application)
 7. update Gruntfile.js to add modules. in this case 'grunt-contrib-uglify'.  
 8. update the modules using `npm install grunt-contrib-uglify --save-dev`
+9. update 'grunt-contrib-jshint', 'grunt-contrib-nodeunit' and 'grunt-contrib-concat' modules
+10. add concat target and write necessary code like below
+```js
+concat: {
+   options: {
+	  // define a string to insert between files in the concatenated output
+	  separator: ';'
+   },
+   dist: {
+	  // files needs to be concatenated
+	  src: ['src/**/*.js'],
+	  // location of the concatenated output JS file
+	  dest: 'dist/<%= pkg.name %>.js'
+   }
+}
+```
+
