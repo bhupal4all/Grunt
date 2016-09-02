@@ -83,3 +83,12 @@ jshint: {
    }
 }
 ```
+13. add module 'grunt-contrib-copy' and add copy like below.
+```js
+copy: {
+	main: {
+		src: 'src/js/app.js',
+		dest: 'dist/app.js'			
+	}
+}
+```

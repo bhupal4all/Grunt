@@ -20,6 +20,13 @@ module.exports = function(grunt) {
 		   }
 		},
 		
+		copy: {
+			main: {
+				src: 'src/js/app.js',
+				dest: 'dist/app.js'			
+			}
+		},
+		
 		uglify: {
 		   options: {
 			  // banner will be inserted at the top of the output which displays the date and time
@@ -27,7 +34,8 @@ module.exports = function(grunt) {
 		   },
 		   dist: {
 			  files: {
-				 'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+				 'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>'],
+				 'dist/app.min.js': ['dist/app.js']
 			  }
 		   }
 		},
@@ -51,7 +59,9 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-contrib-concat');
    grunt.loadNpmTasks('grunt-contrib-uglify');
    grunt.loadNpmTasks('grunt-contrib-jshint');
+   grunt.loadNpmTasks('grunt-contrib-copy');
+
 
    // Default task(s).
-   grunt.registerTask('default' , ['jshint','concat','uglify']);
+   grunt.registerTask('default' , ['jshint','concat','copy','uglify']);
 };
